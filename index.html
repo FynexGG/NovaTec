@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>NOVATEC</title>
+<link id="favicon" rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="stylesheet" href="assets/css/styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+<div class="app">
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-logo">
+        <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <path class="logo-blue" d="M 12 32 Q 12 18 26 18 L 44 18 L 44 76 Q 44 86 34 86 L 22 86 Q 12 86 12 76 Z"/>
+          <path class="logo-blue" d="M 26 18 L 52 18 L 96 72 L 96 86 L 70 86 Z"/>
+          <path class="logo-dark" d="M 66 62 L 100 62 Q 108 62 108 70 L 108 82 Q 108 90 100 90 L 78 90 Q 66 90 66 78 Z"/>
+          <path class="logo-arrow" d="M 76 12 L 106 24 L 106 44 Z" stroke-linejoin="round"/>
+          <rect class="logo-dark" x="84" y="46" width="22" height="32" rx="4"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <h1>NOVATEC</h1>
+        <span>Diseñamos el futuro</span>
+      </div>
+    </div>
+    <nav class="sidebar-nav" id="nav">
+      <button class="nav-item active" data-view="programacion"><span class="ico">📅</span> Programación semanal</button>
+      <button class="nav-item" data-view="mrp"><span class="ico">📦</span> Requerimientos MRP</button>
+      <button class="nav-item" data-view="historial"><span class="ico">📊</span> Historial y reportes</button>
+      <button class="nav-item" data-view="recetas"><span class="ico">🍲</span> Recetas y BOM</button>
+      <button class="nav-item" data-view="config"><span class="ico">⚙️</span> Configuración</button>
+    </nav>
+    <div class="sidebar-role-img vacio" id="sidebarRoleImg">
+      <img id="sidebarRoleImgEl" src="" alt="Rol">
+    </div>
+    <div class="sidebar-footer">CEALKA SAC</div>
+  </aside>
+
+  <div class="main">
+    <header class="header">
+      <div class="header-left">
+        <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Menú">☰</button>
+        <div style="min-width:0">
+          <h2 id="viewTitle">Programación semanal</h2>
+          <div class="header-sub" id="viewSub">Gestiona la programación de menús y genera requerimientos MRP</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <select class="mes-select" id="mesFiltro" title="Filtrar por mes">
+          <option value="">Todos los meses</option>
+        </select>
+        <div class="user-badge" id="userBadge" onclick="toggleUserMenu(event)">
+          <div class="user-avatar" id="userAvatar">AD</div>
+          <div class="user-info"><b id="userName">Administrador</b><span id="userRole">ADMINISTRADOR</span></div>
+          <span class="caret">▼</span>
+          <div class="user-menu" id="userMenu">
+            <div class="menu-header">
+              <div class="name" id="menuUserName">Administrador</div>
+              <div class="role" id="menuUserRole">ADMINISTRADOR</div>
+            </div>
+            <button onclick="event.stopPropagation();cerrarSesion()">🚪 Cerrar sesión</button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="content" id="content"></main>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay"><div class="modal" id="modal"></div></div>
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
